@@ -13,29 +13,11 @@ class TechnologiesTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $tecnologies = [
-            [
-                'name' => 'PHP',
-                'color' => 'blue',
-            ],
-            [
-                'name' => 'Laravel',
-                'color' => 'red',
-            ],
-            [
-                'name' => 'Vue',
-                'color' => 'green',
-            ],
-            [
-                'name' => 'Angulare',
-                'color' => 'yellow',
-            ],
-        ];
+        $technologies = ['PHP', 'Laravel', 'Vue', 'Angular'];
 
-        foreach ($tecnologies as $tecnology) {
+        foreach ($technologies as $technology) {
             $newTech = new Technology();
-            $newTech->name = $tecnology['name'];
-            $newTech->color = $tecnology['color'];
+            $newTech->name = $technology;
             $newTech->save();
         }
     }

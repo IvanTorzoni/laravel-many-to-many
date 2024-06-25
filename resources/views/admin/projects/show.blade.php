@@ -13,6 +13,12 @@
             <dt class="fs-1">Type:</dt>
             <dd class="fw-semibold"> {{ $project->type?->name }} </dd>
 
+            <dt class="fs-1">Technology:</dt>
+            @forelse ($project->technologies as $technology)
+                <dd class="fw-semibold"> {{ $technology->name }} </dd>
+            @empty
+                <dd class="fw-semibold"> No technology involved </dd>
+            @endforelse
             <dt class="fs-3">Description:</dt>
             <dd class="fw-semibold">{{ $project->description }}</dd>
 
@@ -25,5 +31,4 @@
         <a href="{{ route('admin.projects.index') }}" class="btn btn-outline-primary" title="Indietro"><i
                 class="fa-solid fa-square-caret-left"></i></a>
     </div>
-    
 @endsection
