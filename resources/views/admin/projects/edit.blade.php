@@ -23,6 +23,22 @@
                     @endforeach
                 </select>
             </div>
+            <div class="col-5 mb-3">
+                <h6>Technology selection</h6>
+
+                <ul class="list-group">
+                    @foreach ($technologies as $technology)
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <input @checked($project->technologies->contains($technology)) name="technologies[]" class="form-check-input me-1" type="checkbox"
+                                    value="{{ $technology->id }}" id="accessory-{{ $technology->id }}">
+                                <label class="form-check-label"
+                                    for="accessory-{{ $technology->id }}">{{ $technology->name }}</label>
+                            </li>
+                        </ul>
+                    @endforeach
+                </ul>
+            </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea class="form-control" id="description" name="description" rows="3">{{ old('description', $project->description) }}</textarea>

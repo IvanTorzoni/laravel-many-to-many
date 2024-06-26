@@ -37,7 +37,7 @@
                         <td> {{ $project->type?->name }} </td>
                         <td>
                             @foreach ($project->technologies as $technology)
-                                {{ $technology->name }} 
+                                {{ $technology->name }}
                             @endforeach
                         </td>
                         <td> {{ $project->description }} </td>
