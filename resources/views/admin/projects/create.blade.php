@@ -4,7 +4,7 @@
     <div class="container">
         <h1 class="text-center py-5">New Project</h1>
 
-       @include('partials.errors')
+        @include('partials.errors')
 
         <form action="{{ route('admin.projects.store') }}" method="POST">
             @csrf
@@ -20,6 +20,20 @@
                         <option value="{{ $type->id }}">{{ $type->name }}</option>
                     @endforeach
                 </select>
+            </div>
+            <div class="col-5 mb-3">
+                <h6>Technology selection</h6>
+
+                <ul class="list-group">
+                    @foreach ($technologies as $technology)
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                          <input class="form-check-input me-1" type="checkbox" value="{{ $technology->id }}" id="accessory-{{ $technology->id }}">
+                          <label class="form-check-label" for="accessory-{{ $technology->id }}">{{ $technology->name }}</label>
+                        </li>
+                      </ul>
+                    @endforeach
+                </ul>
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
