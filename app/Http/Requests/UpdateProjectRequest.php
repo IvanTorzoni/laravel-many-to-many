@@ -25,7 +25,8 @@ class UpdateProjectRequest extends FormRequest
         return [
             'title' =>  [ 'required',  ValidationRule::unique('projects')->ignore($this->project)],
             'description' => ['min:5', 'max:300'],
-            'type_id' => [ 'required' ]
+            'type_id' => [ 'required' ],
+            'technologies' => [ 'nullable', 'exists:technologies,id' ],
         ];
     }
 
@@ -42,6 +43,7 @@ class UpdateProjectRequest extends FormRequest
             'description.min' => 'Inserire almeno 5 caratteri',
             'description.max' => 'Limite di caratteri inseribili raggiunto (300 caratteri)',
             'type_id.required' => 'Il campo del tipo di progetto non può essere vuoto',
+            'technologies.exists' => 'E\' stata selezionata una tecnologia non presente nel database',
         ];
     }
 }
