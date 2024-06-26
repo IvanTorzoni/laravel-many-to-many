@@ -14,7 +14,7 @@
                 <input type="text" class="form-control" id="title" name="title"
                     value="{{ old('title', $project->title) }}">
             </div>
-            <div  class="mb-3">
+            <div class="mb-3">
                 <label for="type_id">Type</label>
                 <select id="type_id" name="type_id" class="form-control">
                     <option value="">Select a type</option>
@@ -30,8 +30,13 @@
                     @foreach ($technologies as $technology)
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <input @checked($project->technologies->contains($technology)) name="technologies[]" class="form-check-input me-1" type="checkbox"
-                                    value="{{ $technology->id }}" id="accessory-{{ $technology->id }}">
+                                @if (old('technologies') !== null)
+                                    <input @checked(in_array($technology->id, old('technologies', []))) name="technologies[]" class="form-check-input me-1"
+                                        type="checkbox" value="{{ $technology->id }}" id="accessory-{{ $technology->id }}">
+                                @else
+                                    <input @checked($project->technologies->contains($technology)) name="technologies[]" class="form-check-input me-1"
+                                        type="checkbox" value="{{ $technology->id }}" id="accessory-{{ $technology->id }}">
+                                @endif
                                 <label class="form-check-label"
                                     for="accessory-{{ $technology->id }}">{{ $technology->name }}</label>
                             </li>
