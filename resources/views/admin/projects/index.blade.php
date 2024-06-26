@@ -24,6 +24,7 @@
                 <tr>
                     <th scope="col">Title</th>
                     <th scope="col">Type</th>
+                    <th scope="col">Technologies Applyed</th>
                     <th scope="col">Description</th>
                     <th scope="col">Slug</th>
                     <th scope="col">Actions</th>
@@ -34,6 +35,11 @@
                     <tr>
                         <th scope="row"> {{ $project->title }} </th>
                         <td> {{ $project->type?->name }} </td>
+                        <td>
+                            @foreach ($project->technologies as $technology)
+                                {{ $technology->name }} 
+                            @endforeach
+                        </td>
                         <td> {{ $project->description }} </td>
                         <td> {{ $project->slug }} </td>
                         <td>
