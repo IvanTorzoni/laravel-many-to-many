@@ -44,6 +44,11 @@ class ProjectController extends Controller
         $project->slug = Str::slug($request->title);
         $project->fill($newProject);
         $project->save();
+        
+        if ($request->has('technologies')) {
+            $project->technologies()->attach($request->technologies);
+        }
+
         return redirect()->route('admin.projects.index');
     }
 

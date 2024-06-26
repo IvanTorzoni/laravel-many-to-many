@@ -26,12 +26,14 @@
 
                 <ul class="list-group">
                     @foreach ($technologies as $technology)
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                          <input class="form-check-input me-1" type="checkbox" value="{{ $technology->id }}" id="accessory-{{ $technology->id }}">
-                          <label class="form-check-label" for="accessory-{{ $technology->id }}">{{ $technology->name }}</label>
-                        </li>
-                      </ul>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <input name="technologies[]" class="form-check-input me-1" type="checkbox"
+                                    value="{{ $technology->id }}" id="accessory-{{ $technology->id }}">
+                                <label class="form-check-label"
+                                    for="accessory-{{ $technology->id }}">{{ $technology->name }}</label>
+                            </li>
+                        </ul>
                     @endforeach
                 </ul>
             </div>
