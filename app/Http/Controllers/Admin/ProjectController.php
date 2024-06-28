@@ -19,7 +19,7 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
         $perPage = $request->perPage ? $request->perPage : 10;
-        $projectsArray = Project::paginate($perPage)->appends(['perPage' => $perPage]);
+        $projectsArray = Project::with(['type', 'technologies'])->paginate($perPage)->appends(['perPage' => $perPage]);
 
         return view('admin.projects.index', compact('projectsArray'));
     }
